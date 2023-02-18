@@ -7,22 +7,24 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class LocatingCustomWebElementHandler implements InvocationHandler {
-    private final ElementLocator locator;
-    private final WebDriver webDriver;
 
-    public LocatingCustomWebElementHandler(ElementLocator locator, WebDriver webDriver) {
-        this.locator = locator;
-        this.webDriver = webDriver;
-    }
+  private final ElementLocator locator;
+  private final WebDriver webDriver;
 
-    @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        WebElement webElement = locator.findElement();
-        CustomWebElementImpl customWebElement = new CustomWebElementImpl(webElement, webDriver);
-        try {
-            return method.invoke(customWebElement, args);
-        } catch (InvocationTargetException e) {
-            throw e.getCause();
-        }
+  public LocatingCustomWebElementHandler(ElementLocator locator, WebDriver webDriver) {
+    this.locator = locator;
+    this.webDriver = webDriver;
+  }
+
+  @Override
+  public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    WebElement webElement = locator.findElement();
+    CustomWebElementImpl customWebElement = new CustomWebElementImpl(webElement, webDriver);
+
+    try {
+      return method.invoke(customWebElement, args);
+    } catch (InvocationTargetException e) {
+      throw e.getCause();
     }
+  }
 }
