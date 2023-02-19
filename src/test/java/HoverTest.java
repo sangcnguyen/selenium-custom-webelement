@@ -1,6 +1,7 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
@@ -26,9 +27,10 @@ public class HoverTest {
   }
 
   @Test
-  void test() {
+  void shouldHoverAvatar() {
     HoverPage hoverPage = new HoverPage(webDriver);
     hoverPage.goToPage();
-    String username = hoverPage.getHoverContent();
+    String user = hoverPage.getTextWhenHoveringAvatar();
+    Assert.assertEquals(user, "name: user1");
   }
 }

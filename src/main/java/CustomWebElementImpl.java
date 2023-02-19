@@ -41,66 +41,66 @@ public class CustomWebElementImpl implements CustomWebElement {
 
     @Override
     public String getTagName() {
-        return null;
+        return webElement.getTagName();
     }
 
     @Override
     public String getAttribute(String name) {
-        return null;
+        return webElement.getAttribute(name);
     }
 
     @Override
     public boolean isSelected() {
-        return false;
+        return webElement.isSelected();
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return webElement.isEnabled();
     }
 
     @Override
     public String getText() {
-        return null;
+        return webElement.getText();
     }
 
     @Override
     public List<WebElement> findElements(By by) {
-        return null;
+        return webElement.findElements(by);
     }
 
     @Override
     public WebElement findElement(By by) {
-        return null;
+        return webElement.findElement(by);
     }
 
     @Override
     public boolean isDisplayed() {
-        return false;
+        return webElement.isDisplayed();
     }
 
     @Override
     public Point getLocation() {
-        return null;
+        return webElement.getLocation();
     }
 
     @Override
     public Dimension getSize() {
-        return null;
+        return webElement.getSize();
     }
 
     @Override
     public Rectangle getRect() {
-        return null;
+        return webElement.getRect();
     }
 
     @Override
     public String getCssValue(String propertyName) {
-        return null;
+        return webElement.getCssValue(propertyName);
     }
 
     @Override
     public <X> X getScreenshotAs(OutputType<X> target) throws WebDriverException {
-        return null;
+        return webElement.getScreenshotAs(target);
     }
 }

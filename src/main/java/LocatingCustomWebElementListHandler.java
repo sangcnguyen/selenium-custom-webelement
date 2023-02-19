@@ -20,14 +20,12 @@ public class LocatingCustomWebElementListHandler implements InvocationHandler {
   @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
     List<WebElement> elements = locator.findElements();
-    System.out.println("test");
     List<CustomWebElementImpl> customWebElements = elements.stream()
         .map(element -> new CustomWebElementImpl(element, webDriver))
         .collect(Collectors.toList());
 
     try {
-      System.out.println("test 2");
-      return method.invoke(customWebElements, proxy);
+      return method.invoke(customWebElements, args);
     } catch (InvocationTargetException e) {
       throw e.getCause();
     }

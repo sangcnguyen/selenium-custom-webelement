@@ -1,3 +1,4 @@
+import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -14,5 +15,6 @@ public class BasePage {
 
   public void goToPage() {
     this.webDriver.get(BASE_URL.concat(this.path));
+    webDriver.manage().timeouts().implicitlyWait( Duration.ofSeconds(10));
   }
 }
